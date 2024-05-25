@@ -1,35 +1,70 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useReducer } from 'react'
 import './App.css'
+import { TodoList } from './components/TodoList'
+import { AddTodo } from './components/AddTodo'
+import { todoReducer } from './components/todoReducer';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [ todos, dispatch ] = useReducer(todoReducer, []);
+    const [ name, setName] = useState("TodoList")
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    const handleDelete = ( todoId ) => {
+
+      const action = {
+          type: 'delete',
+          payload: todoId
+      }
+
+      dispatch( action );
+  }
+
+    const handleStatus = ( todoId ) =>{
+        
+        dispatch({
+            type: 'change',
+            payload: todoId
+        });
+
+    }
+
+    const handleAddTodo = ( newTodo ) => {
+        
+        dispatch({
+            type: 'add',
+            payload: newTodo
+        });
+
+    }
+
+
+    return (
+      <>
+        <h1>{name}</h1>
+        <hr />
+        <AddTodo
+              handleAddTodo={handleAddTodo}
+          />
+
+        <div className="row">
+
+          <div className="col-7">
+
+            <TodoList
+              todos={todos}
+              handleDelete={handleDelete}
+              handleStatus={handleStatus}
+            />
+
+          </div>
+
+
+        
+
+
+        </div>
+      </>
+    )
+  }
 
 export default App

@@ -46,5 +46,5 @@ export const AddTodo = ({ handleAddTodo }) => {
 }
 
 AddTodo.propTypes = {
-    setTodos: PropTypes.func
+    handleAddTodo: PropTypes.func
 }

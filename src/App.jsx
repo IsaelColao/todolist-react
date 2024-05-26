@@ -1,8 +1,8 @@
 import { useState, useReducer } from 'react'
-import './App.css'
 import { TodoList } from './components/TodoList'
 import { AddTodo } from './components/AddTodo'
 import { todoReducer } from './components/todoReducer';
+import './App.css'
 
 
 function App() {

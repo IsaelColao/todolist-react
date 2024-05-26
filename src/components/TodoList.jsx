@@ -1,17 +1,16 @@
 import  { PropTypes } from "prop-types"
 import { TodoItem } from "./TodoItem"
-import { useState } from "react"
+
 
 export const TodoList = ({todos, handleDelete, handleStatus}) => {
 
     return (
         <>
             <ul>
-                {todos.map((todo, i) => (
+                {todos.map((todo) => (
                     <TodoItem 
                         key={todo.id} 
                         todo={todo}
-                        index={ i }
                         handleDelete={ handleDelete }
                         handleStatus={ handleStatus }
                         />
@@ -23,5 +22,7 @@ export const TodoList = ({todos, handleDelete, handleStatus}) => {
 }
 
 TodoList.propTypes = {
-    todos: PropTypes.array
+    todos: PropTypes.array,
+    handleDelete: PropTypes.func,
+    handleStatus: PropTypes.func
 }

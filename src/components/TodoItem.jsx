@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-export const TodoItem = ({ todo, index, handleDelete, handleStatus }) => {
+export const TodoItem = ({ todo,  handleDelete, handleStatus }) => {
 
     return (
         <li>
@@ -17,6 +17,8 @@ export const TodoItem = ({ todo, index, handleDelete, handleStatus }) => {
     )
 }
 
-// TodoItem.propTypes = {
-//     todo: PropTypes.object.isRequired
-// }
+TodoItem.propTypes = {
+        todo: PropTypes.object,
+        handleDelete: PropTypes.func,
+        handleStatus: PropTypes.func
+}

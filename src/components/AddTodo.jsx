@@ -40,7 +40,7 @@ export const AddTodo = ({ handleAddTodo }) => {
                 onChange={ handleInputChange }
                 placeholder="Escribe una tarea..."
             />
-            <button>Añadir Tarea</button>
+            <button type="submit">Añadir Tarea</button>
         </form>
     )
 }
